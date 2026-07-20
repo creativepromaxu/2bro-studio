@@ -34,8 +34,10 @@ export default function Home() {
     >
       <Navbar isArabic={isArabic} setIsArabic={setIsArabic} />
 
+      {/* الهيرو خارج الحاوية المحصورة عرضها (max-w-7xl) عشان يمتد بعرض الشاشة بالكامل */}
+      <Hero isArabic={isArabic} />
+
       <div className="flex-grow w-full max-w-7xl mx-auto px-8 md:px-16">
-        <Hero isArabic={isArabic} />
         <Work isArabic={isArabic} />
         <Services isArabic={isArabic} />
         <Testimonials isArabic={isArabic} />
