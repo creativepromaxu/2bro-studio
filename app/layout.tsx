@@ -1,5 +1,15 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+
+// خط Alexandria (ملف الخط الفعلي المرفوع بمجلد public/Alexandria) — يدعم
+// العربية والإنجليزية بكل أوزانه (100 إلى 900) عبر متغير CSS واحد، ومحمّل
+// محلياً بدون أي اعتماد على الإنترنت وقت البناء
+const alexandria = localFont({
+  src: "../public/Alexandria/Alexandria-VariableFont_wght.ttf",
+  variable: "--font-alexandria",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://2bro.studio"),
@@ -31,19 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ar" dir="rtl">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Tajawal:wght@400;500;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="ar" dir="rtl" className={alexandria.variable}>
       <body className="bg-[#0A0A0A] text-white overflow-x-hidden antialiased">
         {children}
       </body>

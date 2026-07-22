@@ -121,10 +121,11 @@ export default function Hero({ isArabic }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10" />
         <div className="absolute inset-0 bg-black/15" />
 
-        {/* المحتوى فوق الفيديو — كل عنصر بمكانه النهائي، يظهر تدريجياً حسب السكرول */}
-        <div className="relative z-10 h-full w-full flex flex-col justify-end px-5 sm:px-8 md:px-12 lg:px-16 pb-10 sm:pb-14 md:pb-20">
+        {/* المحتوى فوق الفيديو — كل عنصر بمكانه النهائي (توسيط تام)، يظهر تدريجياً حسب السكرول */}
+        <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-5 sm:px-8">
           {/* المرحلة الأولى */}
           <div
+            className="max-w-3xl flex flex-col items-center"
             style={{
               opacity: stage1,
               transform: `translateY(${(1 - stage1) * 28}px)`,
@@ -135,21 +136,23 @@ export default function Hero({ isArabic }: HeroProps) {
             </span>
 
             <h1
-              className={`font-black text-white mb-5 md:mb-7 ${
+              className={`font-bold text-white mb-5 md:mb-7 ${
                 isArabic
-                  ? "text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05]"
+                  ? "text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.3]"
                   : "text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.95] uppercase"
               }`}
             >
               {headlineLines.map((line, i) => (
-                <span key={i} className="block">
+                <span key={i} className="block whitespace-nowrap">
                   {line}
                 </span>
               ))}
-              <span className="block text-[#CCFF00]">{headlineHighlight}</span>
+              <span className="block whitespace-nowrap text-[#CCFF00]">
+                {headlineHighlight}
+              </span>
             </h1>
 
-            <p className="text-white/70 text-sm sm:text-base md:text-lg font-normal leading-relaxed max-w-md mb-8 md:mb-10">
+            <p className="text-white/70 text-sm sm:text-base md:text-lg font-normal leading-relaxed max-w-xl mb-8 md:mb-10">
               {isArabic ? (
                 <>
                   في <span className="font-bold text-white">2Bro Studio</span>
@@ -168,7 +171,7 @@ export default function Hero({ isArabic }: HeroProps) {
 
           {/* المرحلة الثانية: الأزرار */}
           <div
-            className="flex flex-wrap gap-3 md:gap-4"
+            className="flex flex-wrap justify-center gap-3 md:gap-4"
             style={{
               opacity: stage2,
               transform: `translateY(${(1 - stage2) * 28}px)`,

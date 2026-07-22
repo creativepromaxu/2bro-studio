@@ -118,14 +118,14 @@ export default function Services({ isArabic }: ServicesProps) {
         } mb-12 sm:mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-4`}
       >
         <div>
-          <span className="text-xs font-mono tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
+          <span className="text-xs font-mono font-semibold tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
             {isArabic ? "// طيف التصميم والبرمجة" : "// DESIGN & CODE SPECTRUM"}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white uppercase">
             {isArabic ? "مجالات الخبرة" : "Our Expertise"}
           </h2>
         </div>
-        <div className="text-xs font-mono text-[#888888] tracking-widest hidden md:block">
+        <div className="text-xs font-mono font-semibold text-[#888888] tracking-widest hidden md:block">
           2BRO STUDIO / FOCUS AREAS
         </div>
       </div>

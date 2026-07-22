@@ -9,17 +9,10 @@
 body {
   background-color: var(--bg);
   color: #ffffff;
-  font-family: "Space Grotesk", "Tajawal", system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-alexandria), system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
-}
-
-/* الخط العربي: Tajawal أولاً عندما يكون الاتجاه RTL */
-[dir="rtl"] body,
-[dir="rtl"] {
-  font-family: "Tajawal", "Space Grotesk", system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
 }
 
 html {

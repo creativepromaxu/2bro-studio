@@ -24,10 +24,10 @@ export default function CaseStudy({
   return (
     <main className="bg-[#0A0A0A] min-h-screen text-white flex flex-col items-center justify-center p-8 md:p-16">
       <div className="max-w-3xl w-full text-center space-y-6 my-8">
-        <span className="text-xs font-mono tracking-widest text-[#CCFF00] block" dir="ltr">
+        <span className="text-xs font-mono font-semibold tracking-widest text-[#CCFF00] block" dir="ltr">
           {`// CASE STUDY ${num}`}
         </span>
-        <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight" dir="ltr">
+        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight" dir="ltr">
           {title}
         </h1>
         <p
@@ -54,7 +54,7 @@ export default function CaseStudy({
         <div className="pt-8">
           <Link
             href="/"
-            className="inline-block text-xs font-mono uppercase tracking-widest border border-white/10 px-8 py-4 rounded-full hover:border-[#CCFF00] hover:text-[#CCFF00] hover:bg-[#CCFF00]/5 transition-all duration-300"
+            className="inline-block text-xs font-mono font-semibold uppercase tracking-widest border border-white/10 px-8 py-4 rounded-full hover:border-[#CCFF00] hover:text-[#CCFF00] hover:bg-[#CCFF00]/5 transition-all duration-300"
             dir="ltr"
           >
             ← Back to main

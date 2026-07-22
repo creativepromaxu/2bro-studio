@@ -52,7 +52,6 @@ export default function Navbar({ isArabic, setIsArabic }: NavbarProps) {
 
   const navLinks = [
     { id: "work-section", ar: "أعمالنا", en: "Work" },
-    { id: "services-section", ar: "خدماتنا", en: "Services" },
     { id: "testimonials-section", ar: "آراء العملاء", en: "Reviews" },
   ];
 
@@ -113,7 +112,7 @@ export default function Navbar({ isArabic, setIsArabic }: NavbarProps) {
           <button
             onClick={() => setIsArabic(!isArabic)}
             aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
-            className="text-xs tracking-widest font-mono border border-white/20 px-4 py-1.5 rounded-full hover:border-[#CCFF00] hover:text-[#CCFF00] active:border-[#CCFF00] active:text-[#CCFF00] transition-all duration-300 bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]/50 cursor-pointer"
+            className="text-xs tracking-widest font-mono font-semibold border border-white/20 px-4 py-1.5 rounded-full hover:border-[#CCFF00] hover:text-[#CCFF00] active:border-[#CCFF00] active:text-[#CCFF00] transition-all duration-300 bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]/50 cursor-pointer"
           >
             {isArabic ? "EN" : "AR"}
           </button>

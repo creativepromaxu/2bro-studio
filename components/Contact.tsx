@@ -90,10 +90,10 @@ export default function Contact({ isArabic }: ContactProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         {/* جانب التعريف */}
         <div>
-          <span className="text-xs font-mono tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
+          <span className="text-xs font-mono font-semibold tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
             {isArabic ? "// لنبدأ شيئاً عظيماً معاً" : "// CONNECT WITH US"}
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white uppercase mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white uppercase mb-6">
             {isArabic ? "هل لديك مشروع؟" : "Let's Start a Project."}
           </h2>
           <p className="text-base md:text-lg text-[#888888] font-light leading-relaxed max-w-md mb-10">
@@ -108,7 +108,7 @@ export default function Contact({ isArabic }: ContactProps) {
               className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-black hover:border-[#CCFF00]/40 transition-colors"
             >
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-[#666666] uppercase">
+                <span className="text-[10px] font-mono font-semibold text-[#666666] uppercase">
                   DIRECT EMAIL
                 </span>
                 <span className="text-sm font-bold text-white font-mono" dir="ltr">
@@ -125,7 +125,7 @@ export default function Contact({ isArabic }: ContactProps) {
             <div>
               <label
                 htmlFor="contact-name"
-                className="block text-xs font-mono text-[#888888] uppercase mb-2"
+                className="block text-xs font-mono font-semibold text-[#888888] uppercase mb-2"
               >
                 {isArabic ? "الاسم الكريم" : "Your Name"}
               </label>
@@ -144,7 +144,7 @@ export default function Contact({ isArabic }: ContactProps) {
             <div>
               <label
                 htmlFor="contact-info"
-                className="block text-xs font-mono text-[#888888] uppercase mb-2"
+                className="block text-xs font-mono font-semibold text-[#888888] uppercase mb-2"
               >
                 {isArabic ? "بريدك الإلكتروني أو رقم جوالك" : "Your Email or Phone Number"}
               </label>
@@ -167,7 +167,7 @@ export default function Contact({ isArabic }: ContactProps) {
             <div>
               <label
                 htmlFor="contact-details"
-                className="block text-xs font-mono text-[#888888] uppercase mb-2"
+                className="block text-xs font-mono font-semibold text-[#888888] uppercase mb-2"
               >
                 {isArabic ? "أخبرنا عن مشروعك" : "Tell us about your project"}
               </label>

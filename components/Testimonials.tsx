@@ -30,10 +30,10 @@ export default function Testimonials({ isArabic }: TestimonialsProps) {
     >
       {/* العناوين العلوية */}
       <div className="text-center mb-12 sm:mb-16 md:mb-20 px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-white mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
           {isArabic ? "موضع ثقة الشركات الطموحة" : "Trusted By Ambitious Teams"}
         </h2>
-        <p className="text-xs font-mono tracking-widest text-[#CCFF00] uppercase">
+        <p className="text-xs font-mono font-semibold tracking-widest text-[#CCFF00] uppercase">
           {isArabic ? "آراء وتقييمات العملاء" : "Feedback from clients"}
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function Testimonials({ isArabic }: TestimonialsProps) {
               dir={isArabic ? "rtl" : "ltr"}
             >
               <div>
-                <div className="flex items-center gap-2 mb-6 font-mono text-xs text-neutral-500">
+                <div className="flex items-center gap-2 mb-6 font-mono font-semibold text-xs text-neutral-500">
                   <span>{review.rating}</span>
                   <span className="text-[#CCFF00] text-sm" aria-hidden="true">
                     ★★★★★
@@ -75,7 +75,7 @@ export default function Testimonials({ isArabic }: TestimonialsProps) {
                   <span className="text-sm font-bold text-white truncate">
                     {review.name}
                   </span>
-                  <span className="text-[10px] font-mono tracking-wider text-[#CCFF00] mt-0.5 uppercase truncate">
+                  <span className="text-[10px] font-mono font-semibold tracking-wider text-[#CCFF00] mt-0.5 uppercase truncate">
                     {review.company}
                   </span>
                 </div>

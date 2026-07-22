@@ -15,24 +15,22 @@ interface Project {
   description: string;
 }
 
+/* بطاقة مشروع كبيرة موحّدة — صورة + نص جنب بعض بحجم بارز يتناسب مع
+   ضخامة فيديو الهيرو، وتتبادل جهة الصورة كل بطاقة لإعطاء إيقاع بصري */
 function ProjectCard({
   project,
   index,
   isArabic,
-  gridClass,
+  reverse,
 }: {
   project: Project;
   index: number;
   isArabic: boolean;
-  gridClass: string;
+  reverse: boolean;
 }) {
   const [cardRef, cardVisible] = useReveal<HTMLAnchorElement>(0.1);
   const arrow = isArabic ? "←" : "→";
-  const viewText = isArabic ? "استعراض القسم" : "View Details";
-
-  const titleShift = isArabic
-    ? "group-hover:-translate-x-1.5 group-active:-translate-x-1.5"
-    : "group-hover:translate-x-1.5 group-active:translate-x-1.5";
+  const viewText = isArabic ? "استعراض المشروع" : "View Project";
 
   return (
     <Link
@@ -41,46 +39,47 @@ function ProjectCard({
       style={{ transitionDelay: `${(index % 3) * 90}ms` }}
       className={`reveal-up ${
         cardVisible ? "is-visible" : ""
-      } ${gridClass} group relative border border-white/5 bg-black p-5 sm:p-6 rounded-3xl flex flex-col hover:border-[#CCFF00]/30 active:border-[#CCFF00]/30 transition-all duration-500 cursor-pointer overflow-hidden active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]/50`}
+      } group relative grid md:grid-cols-2 gap-6 md:gap-10 items-stretch border border-white/5 hover:border-[#CCFF00]/30 active:border-[#CCFF00]/30 bg-black rounded-3xl p-5 sm:p-6 md:p-8 transition-all duration-500 overflow-hidden active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CCFF00]/50`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#CCFF00]/[0.01] to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#CCFF00]/[0.02] to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* صورة القسم — مربعة */}
-      <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-5 sm:mb-6 border border-white/5 bg-neutral-900 z-10">
+      <div
+        className={`relative w-full aspect-[4/3] md:aspect-auto rounded-2xl overflow-hidden border border-white/5 bg-neutral-900 z-10 order-1 md:order-none ${
+          reverse ? "md:order-2" : "md:order-1"
+        }`}
+      >
         <Image
           src={`/${project.id}.webp`}
           alt={project.title}
           fill
-          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+          sizes="(max-width: 768px) 90vw, 45vw"
           className="object-cover grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-all duration-700 group-hover:scale-105"
         />
       </div>
 
-      {/* التصنيف والرقم الفسفوري */}
-      <div className="flex justify-between items-center z-10 gap-3 mb-4">
-        <span className="text-xs font-mono tracking-wider text-[#888888] uppercase block max-w-[75%] mt-1">
-          {project.category}
-        </span>
-        <span className="text-3xl sm:text-4xl font-black font-mono leading-none text-[#CCFF00] transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 group-active:scale-110 group-active:-rotate-6 select-none">
-          {project.id}
-        </span>
-      </div>
-
-      {/* العنوان والوصف والسهم التفاعلي */}
-      <div className="z-10 relative flex-1 flex flex-col justify-between">
-        <div>
-          <h3
-            className={`text-xl sm:text-2xl font-bold text-[#CCFF00] mb-2 sm:mb-3 transition-transform duration-300 ${titleShift}`}
-          >
-            {project.title}
-          </h3>
-          <p className="text-sm text-[#888888] font-light leading-relaxed group-hover:text-neutral-300 group-active:text-neutral-300 transition-colors duration-500">
-            {project.description}
-          </p>
+      <div
+        className={`relative z-10 flex flex-col justify-center py-2 md:py-6 ${
+          reverse ? "md:order-1" : "md:order-2"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-3 mb-5 md:mb-8">
+          <span className="text-xs font-mono font-semibold tracking-wider text-[#888888] uppercase">
+            {project.category}
+          </span>
+          <span className="text-4xl sm:text-5xl md:text-6xl font-black font-mono leading-none text-[#CCFF00] transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 group-active:scale-110 group-active:-rotate-6 select-none">
+            {project.id}
+          </span>
         </div>
 
-        <div className="mt-6 flex items-center gap-2 text-neutral-500 group-hover:text-[#CCFF00] group-active:text-[#CCFF00] transition-all duration-300">
-          <span className="text-xs font-mono tracking-wider uppercase select-none">
+        <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 md:mb-5 tracking-tight leading-[1.05]">
+          {project.title}
+        </h3>
+        <p className="text-sm sm:text-base text-[#888888] font-light leading-relaxed max-w-lg mb-6 md:mb-10 group-hover:text-neutral-300 group-active:text-neutral-300 transition-colors duration-500">
+          {project.description}
+        </p>
+
+        <div className="flex items-center gap-2 text-neutral-500 group-hover:text-[#CCFF00] group-active:text-[#CCFF00] transition-all duration-300">
+          <span className="text-xs font-mono font-semibold tracking-wider uppercase select-none">
             {viewText}
           </span>
           <span
@@ -144,7 +143,7 @@ export default function Work({ isArabic }: WorkProps) {
   return (
     <section
       id="work-section"
-      className="w-full py-16 sm:py-20 md:py-28 border-t border-white/5 bg-[#0A0A0A] px-4 md:px-0 overflow-hidden"
+      className="w-full py-16 sm:py-20 md:py-28 border-t border-white/5 bg-[#0A0A0A] overflow-hidden"
       dir={isArabic ? "rtl" : "ltr"}
     >
       {/* رأس القسم */}
@@ -152,47 +151,32 @@ export default function Work({ isArabic }: WorkProps) {
         ref={headerRef}
         className={`reveal-up ${
           headerVisible ? "is-visible" : ""
-        } mb-12 sm:mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-start md:items-baseline gap-4`}
+        } mb-10 sm:mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-baseline gap-4`}
       >
         <div>
-          <span className="text-xs font-mono tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
-            {isArabic ? "// ركائز الاستوديو الأساسية" : "// OUR CORE PILLARS"}
+          <span className="text-xs font-mono font-semibold tracking-[0.2em] text-[#CCFF00] uppercase block mb-3">
+            {isArabic ? "// أبرز أعمالنا" : "// SELECTED WORK"}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white uppercase">
             {isArabic ? "مجالات العمل" : "What We Do"}
           </h2>
         </div>
-        <span className="text-xs font-mono text-[#888888] tracking-widest uppercase">
+        <span className="text-xs font-mono font-semibold text-[#888888] tracking-widest uppercase">
           2Bro Studio © {isArabic ? "2026 تخصصات متكاملة" : "2026 Integrated Services"}
         </span>
       </div>
 
-      {/*
-        شبكة المشاريع بنظام 6 أعمدة:
-        - الموبايل: عمود واحد.
-        - sm: عمودان (البطاقة الأخيرة بعرض كامل للتوازن).
-        - lg: 3 بطاقات في الصف، والصف الثاني (بطاقتان) يتوسّط تلقائياً.
-      */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 sm:gap-6 md:gap-8">
-        {projects.map((project, index) => {
-          let gridClass = "col-span-1 sm:col-span-1 lg:col-span-2";
-          if (index === 3) {
-            gridClass = "col-span-1 sm:col-span-1 lg:col-start-2 lg:col-span-2";
-          }
-          if (index === 4) {
-            gridClass = "col-span-1 sm:col-span-2 lg:col-span-2";
-          }
-
-          return (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              isArabic={isArabic}
-              gridClass={gridClass}
-            />
-          );
-        })}
+      {/* قائمة المشاريع — كل بطاقة بنفس الحجم البارز، تتبادل جهة الصورة */}
+      <div className="flex flex-col gap-5 sm:gap-6 md:gap-8">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            isArabic={isArabic}
+            reverse={index % 2 === 1}
+          />
+        ))}
       </div>
     </section>
   );
