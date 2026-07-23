@@ -35,7 +35,12 @@ const brands: Brand[] = [
     cover: "/identities/ZAHER.jpg",
     fullImage: "/identities/ZAHER-full.webp",
   },
-  { id: "brand-02", name: "Brand Two" },
+  {
+    id: "WOW",
+    name: "THAM WOW",
+    cover: "/identities/WOW.jpg",
+    fullImage: "/identities/WOW-full.webp",
+  },
   { id: "brand-03", name: "Brand Three" },
 ];
 
