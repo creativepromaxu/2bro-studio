@@ -41,7 +41,12 @@ const brands: Brand[] = [
     cover: "/identities/WOW.jpg",
     fullImage: "/identities/WOW-full.webp",
   },
-  { id: "brand-03", name: "Brand Three" },
+  {
+    id: "WASH",
+    name: "WASH",
+    cover: "/identities/WASH.jpg",
+    fullImage: "/identities/WASH-full.webp",
+  },
 ];
 
 const MIN_ZOOM = 1;
